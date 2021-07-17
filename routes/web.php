@@ -13,4 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
+
+// Route::group(['middleware' => ['auth', 'roles:admin,manager']], function () {
+    Route::get('/dashboard', 'DashboardController')->name('dashboard');
+    Route::get('/new-order', 'DashboardController@newOrder');
+    Route::get('/order-history', 'DashboardController@orderHistory');
+    Route::get('/price-list', 'DashboardController@priceList');
+    Route::get('/topup', 'DashboardController@topup');
+    Route::get('/topup-history', 'DashboardController@topupHistory');
+    Route::get('/open-ticket', 'DashboardController@openTicket');
+    Route::get('/faq', 'DashboardController@faq');
+// });
